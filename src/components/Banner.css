@@ -1,0 +1,39 @@
+
+.banner-content{
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
+    z-index: 101;
+}
+.banner-content h3{
+font-size: 18px;
+font-weight: 500;
+color: var(--dark);
+
+
+}
+.banner-content p{
+    font-size: 14px;
+    width: 199px;
+    color: #989594;
+    margin: 5px 0;
+}
+.banner-content p span{
+    color: orange;
+    font-weight: 600;
+    
+}
+.banner-content a{
+    background-color: orange;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+.banner-content::hover{
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, .15);
+}

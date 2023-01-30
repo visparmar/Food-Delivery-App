@@ -1,0 +1,31 @@
+.subMenuContainer{
+    display: flex;
+}
+.view-all{
+    color: orange;
+    font-weight: 500;
+    margin-left: auto;
+    padding: 4px 4px;
+    font-size: 12px;
+}
+.MuiSvgIcon-root {
+    color: white;
+
+}
+.subMenuContainer i{
+    background-color: orange;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    /* padding: 2px 5px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+}
+.subMenuContainer h3{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--dark);
+}
