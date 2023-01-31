@@ -4,17 +4,19 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import logo from '../images/img/chef1.png'
+import { useState } from "react";
 import profile from '../images/img/avatar.png'
 import { useSelector} from "react-redux";
 const Header = () => {
+  const [toggle,settoggle]=useState(false);
   const mystate=useSelector((state)=>state.reducer);
     useEffect(() => {
       const toggleMenu=document.querySelector('.shoppingCart');
-      console.log("s");
+      // console.log("s");
       toggleMenu.addEventListener('Click',()=>{ 
         document.querySelector('.right-container').classList.toggle('activeRightMenu');
       });
-    }, []);
+    }, [toggle]);
     return (
         <header>
             <img src={logo} alt="thi is logo" className="logo"/>
@@ -25,7 +27,7 @@ const Header = () => {
                 
             </div>
 
-           <div className="shoppingCart">
+           <div className="shoppingCart" onClick={()=>settoggle(!toggle)}>
                    <ShoppingCartRoundedIcon className="cart"/>
                    <div className="cartContent">
                     <p>{mystate}</p>
