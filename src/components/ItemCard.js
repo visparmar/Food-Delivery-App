@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 import {Favorite,AddTwoTone,GradeRounded} from '@mui/icons-material';
 import './ItemCard.css'
-
+import { useDispatch } from 'react-redux';
+import {SET_CART} from '../redux/Action'
 
 
 
@@ -9,6 +10,7 @@ import './ItemCard.css'
 
 const ItemCard = ({ imgSrc, name, ratings, price}) => {
 
+const dispatch=useDispatch();
     
 
 const [isFavourite,setIsFavourite]=useState(false);
@@ -42,7 +44,7 @@ const handleClick=(value)=>{
                     })}
                 </div>
                 <h3><span className='dollar-sign'>$</span>{price}</h3>
-                <i className='addToCart'>
+                <i className='addToCart' onClick={()=>dispatch(SET_CART)}>
                     <AddTwoTone/>
                 </i>
             </div>

@@ -25,10 +25,7 @@ import Banner from './components/Banner'
 function App() {
 
 
-  const uniqueList = [new Set(Items.map((data) => {
-    return data.itemId;
-  }))]
-  // console.log(uniqueList);
+
 
   const [menuData, setMenuData] = useState(Items.filter((element) => {
     return element.itemId === 'buger01';
