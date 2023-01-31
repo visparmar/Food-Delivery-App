@@ -9,7 +9,7 @@ import { useSelector} from "react-redux";
 const Header = () => {
   const mystate=useSelector((state)=>state.reducer);
     useEffect(() => {
-      const toggleMenu=document.querySelector('.cart');
+      const toggleMenu=document.querySelector('.shoppingCart');
       console.log("s");
       toggleMenu.addEventListener('Click',()=>{ 
         document.querySelector('.right-container').classList.toggle('activeRightMenu');
