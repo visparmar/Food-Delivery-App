@@ -9,6 +9,9 @@ import { MenuItems, Items } from './components/Data';
 import ItemCard from './components/ItemCard.js'
 import DebitCard from './components/DebitCard'
 import CartItem from './components/CartItem'
+import { useSelector } from 'react-redux';
+import {TOTAL} from './redux/Action'
+import { useDispatch } from 'react-redux';
 import {
   AccountBalanceWalletRounded,
   HomeRounded,
@@ -24,7 +27,30 @@ import Banner from './components/Banner'
 
 function App() {
 
+   
+  const [totalprice,settotalprice]=useState(0);
+  const getdata=useSelector((state)=>state.cartreducer.carts);
+  // console.log(getdata);
+  const gettotal=useSelector((state)=>state.cartreducer.price);
+ console.log(gettotal)
 
+const total=()=>{
+  console.log("triggred");
+  let price=0;
+  getdata.map((ele)=>{
+    price=Number(ele.price)+price
+
+  })
+  settotalprice(price);
+}
+
+
+  const [cartDetail,setcartDetail]=useState(getdata);
+
+
+  useEffect(()=>{
+      setcartDetail(getdata);
+  },[getdata])
 
 
   const [menuData, setMenuData] = useState(Items.filter((element) => {
@@ -127,7 +153,7 @@ function App() {
                       name={data.name}
                       ratings={data.ratings}
                       price={data.price}
-
+                       Id={data.id}
                     />
                   </div>
 
@@ -152,142 +178,25 @@ function App() {
 
               <div className="cartItems">
 
+                  {cartDetail.map((data)=>{
+                    return(
+                      <div key={data.id}>
 
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
+                      <CartItem
+                      name={data.name}
+                      imgSrc={data.imgSrc}
+                     Id={data.id}
+                      price={data.price}
+                      
+                    />
+                   
+                      </div>
+                    
+                    );
+                  })}
+               
 
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-                 <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-<CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-                 <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
-
-                <CartItem
-                  name="Burger Busto"
-                  imgSrc={logo}
-                  qty="2"
-                  price="5"
-
-                />
+      
 
               </div>
 
@@ -295,7 +204,7 @@ function App() {
                <div className="totalSection">
                 <h3 className="total">Toltal</h3>
                 <p>
-                  <span>$ </span>45.0
+                  <span>$ </span>{gettotal}
                 </p>
                </div>
                <button className="checkOut">Checkout</button>

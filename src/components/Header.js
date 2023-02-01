@@ -9,14 +9,14 @@ import profile from '../images/img/avatar.png'
 import { useSelector} from "react-redux";
 const Header = () => {
   
-  const mystate=useSelector((state)=>state.reducer);
-    useEffect(() => {
-      const toggleMenu=document.querySelector('.toggleIcon');
-      // console.log("s");
-      toggleMenu.addEventListener('Click',()=>{ 
-        document.querySelector('.right-container').classList.toggle('activeRightMenu');
-      });
-    }, []);
+function handleClick(){
+  
+  document.querySelector(".right-container").classList.toggle("activeRightMenu");
+}
+
+  const getdata=useSelector((state)=>state.cartreducer.carts);
+  // console.log(getdata.length);
+   
     return (
         <header>
             <img src={logo} alt="thi is logo" className="logo"/>
@@ -27,10 +27,10 @@ const Header = () => {
                 
             </div>
 
-           <div className="shoppingCart" >
+           <div className="shoppingCart" onClick={handleClick} >
                    <ShoppingCartRoundedIcon className="cart"/>
                    <div className="cartContent">
-                    <p>{mystate}</p>
+                    <p>{getdata.length}</p>
                    </div>
            </div>
 

@@ -1,7 +1,17 @@
-export const SET_CART={
-    type:"set_cart"
+export const ADD=(item)=>{
+        return{
+            type:"ADD_CART",
+            payload:item
+        }
 }
 
-export const SET_TOTAL={
-    type:"set_total"
+
+ export const DLT=(id)=>{
+    return{
+        type:"RMV_CART",
+        data:id
+    }
 }
+
+
+

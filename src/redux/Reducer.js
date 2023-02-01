@@ -1,10 +1,36 @@
-const initialState=0;
+const initialState={
+    carts:[],
+    price:0
+};
 
-const reducer=(state=initialState,action)=>{
+
+
+const cartreducer=(state=initialState,action)=>{
     switch(action.type){
- case "set_cart": {return state + 1;}
-  default : return state
+ case "ADD_CART": 
+    return {
+        ...state,
+   carts:[ ...state.carts,action.payload]
+
+};
+
+ case "RMV_CART":
+ const data=state.carts.filter((ele)=> ele.id !==action.data)
+
+
+        return {
+            ...state,
+            carts:data
+        }
+
+                 
+               
+
+default : 
+return state
+
+
     }
 
 }
-export default reducer;
+export default cartreducer;
