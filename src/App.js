@@ -26,29 +26,19 @@ import Banner from './components/Banner'
 
 
 function App() {
-
-   
-  const [totalprice,settotalprice]=useState(0);
+  
+   const disp=useDispatch();
+ 
   const getdata=useSelector((state)=>state.cartreducer.carts);
-  // console.log(getdata);
-  const gettotal=useSelector((state)=>state.cartreducer.price);
- console.log(gettotal)
-
-const total=()=>{
-  console.log("triggred");
-  let price=0;
-  getdata.map((ele)=>{
-    price=Number(ele.price)+price
-
-  })
-  settotalprice(price);
-}
-
-
+ 
+  const totalprice=useSelector((state)=>state.cartreducer.price);
+ 
   const [cartDetail,setcartDetail]=useState(getdata);
 
 
   useEffect(()=>{
+   
+    
       setcartDetail(getdata);
   },[getdata])
 
@@ -57,7 +47,7 @@ const total=()=>{
     return element.itemId === 'buger01';
   })
   );
-  // console.log(menuData);
+
 
 
 
@@ -204,7 +194,7 @@ const total=()=>{
                <div className="totalSection">
                 <h3 className="total">Toltal</h3>
                 <p>
-                  <span>$ </span>{gettotal}
+                  <span>$ </span>{totalprice}
                 </p>
                </div>
                <button className="checkOut">Checkout</button>

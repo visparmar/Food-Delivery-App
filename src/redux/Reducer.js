@@ -24,7 +24,17 @@ const cartreducer=(state=initialState,action)=>{
         }
 
                  
-               
+        case "total":
+            const tot=action.data
+           
+           
+                   return {
+                      ...state,
+                       price:tot
+                   }
+           
+                            
+                       
 
 default : 
 return state

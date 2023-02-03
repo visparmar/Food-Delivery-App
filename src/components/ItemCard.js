@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import {Favorite,AddTwoTone,GradeRounded} from '@mui/icons-material';
 import './ItemCard.css'
-import { useDispatch } from 'react-redux';
-import {ADD} from '../redux/Action'
+import { useDispatch,useSelector } from 'react-redux';
+import {ADD,TOTAL} from '../redux/Action'
 import {Items} from './Data'
 
 
@@ -11,14 +11,16 @@ import {Items} from './Data'
 
 
 const ItemCard = ({ imgSrc, name, ratings, price,Id}) => {
- 
+    const Price=useSelector((state)=>state.cartreducer.price)
+ const dop=useDispatch();
 const dispatch=useDispatch();
    const senddata=(ele)=>{
        const data=Items.find((n)=>{
         return n.id===ele;
        })
        dispatch(ADD(data));
-    //    console.log(data);
+       dop(TOTAL(Price+price));
+       
    } 
 
 const [isFavourite,setIsFavourite]=useState(false);

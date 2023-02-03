@@ -13,5 +13,12 @@ export const ADD=(item)=>{
     }
 }
 
+export const TOTAL=(ele)=>{
+    return{
+        type:"total",
+        data:ele
+    }
+}
+
 
 
