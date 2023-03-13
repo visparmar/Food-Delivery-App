@@ -22,10 +22,12 @@ import {
 } from '@mui/icons-material';
 
 import Banner from './components/Banner'
+import StripeContainer from './components/StripeContainer';
 
 
 
 function App() {
+  const [showitem,setShowItem] = useState(false);
   
    const disp=useDispatch();
  
@@ -197,7 +199,8 @@ function App() {
                   <span>$ </span>{totalprice}
                 </p>
                </div>
-               <button className="checkOut">Checkout</button>
+               {showitem ? <StripeContainer/> : <><button className="checkOut" onClick={()=>setShowItem(true)}>Checkout</button></>}
+               {/* <button className="checkOut" >Checkout</button> */}
           </div>
         </div>
       </main>
